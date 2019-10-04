@@ -1,15 +1,15 @@
 ## Converting JavaScript objects --> DyanmoDB
 
-This repo provides examples of basic transforamtions of Javascript objects or JSON files to prepare them for DynamoDB putItem or batchWriteItem requests. It also shows how to convert DynamoDB records into JS objects.
+Examples of transforamtions of Javascript objects or JSON files for DynamoDB putItem or batchWriteItem requests. It also shows how to convert DynamoDB records into JS objects.
 
 ## Examples
 
-Object & Record Conversion
+**Object & Record Conversion**
 
 1. JS Object --> DyanmoDB record
 2. DynamoDB record --> JS Object
 
-Writing to Dynamo
+**Writing to Dynamo**
 
 3. PutItem (optional UUID)
 4. BatchItemWrite from Array (optional UUID)
@@ -17,10 +17,12 @@ Writing to Dynamo
 
 ## Basic Usage
 
+Batch uploading an array to DyanmoDB:
+
 ```
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
-var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
 const json2dynamo = require('json2dynamo')
 
