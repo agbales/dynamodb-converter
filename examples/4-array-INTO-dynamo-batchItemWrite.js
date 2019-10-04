@@ -27,6 +27,10 @@ const params = json2dynamo.convertData(arr, 'yourTableName', true);
 console.log(params);
 
 // Batch Write Items -->
+
+// AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
+// var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+
 // ddb.batchWriteItem(params, (err, data) => {
 //   if (err) {
 //     console.log("Error", err);
