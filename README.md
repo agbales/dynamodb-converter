@@ -6,14 +6,14 @@ This repo provides examples of basic transforamtions of Javascript objects or JS
 
 Object & Record Conversion
 
-1. - JS Object --> DyanmoDB record
-2. - DynamoDB record --> JS Object
+1. JS Object --> DyanmoDB record
+2. DynamoDB record --> JS Object
 
 Writing to Dynamo
 
-3. - PutItem (optional UUID)
-4. - BatchItemWrite from Array (optional UUID)
-5. - BatchItemWrite from File (opitonal UUID)
+3. PutItem (optional UUID)
+4. BatchItemWrite from Array (optional UUID)
+5. BatchItemWrite from File (opitonal UUID)
 
 ## Basic Usage
 
