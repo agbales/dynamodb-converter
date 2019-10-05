@@ -7,6 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "agbales",
+  "keywords": [
+    "DynamoDB",
+    "Dyanmo",
+    "Converter",
+    "AWS",
+    "JSON",
+    "putItem",
+    "batchItemWrite"
+  ],
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.542.0",
