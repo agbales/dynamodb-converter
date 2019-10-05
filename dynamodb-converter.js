@@ -1,3 +1,4 @@
+const AWS = require('aws-sdk');
 const convertObj = require('json-to-dynamo');
 const uuidv4 = require('uuid/v4');
 let APPEND_UUID = false;
@@ -32,4 +33,16 @@ const convertArray = (array, tableName, uuid = false) => {
   return JSON.stringify(data, null, 2);
 };
 
-module.exports = { convertArray };
+const convert = (obj, uuid = false) => {
+  const marshalled = AWS.DynamoDB.Converter.marshall(obj);
+  if (uuid) {
+    return { ...marshalled, uuid: uuidv4() };
+  }
+  return marshalled;
+};
+
+const unconvert = obj => {
+  return AWS.DynamoDB.Converter.unmarshall(obj);
+};
+
+module.exports = { convertArray, convert, unconvert };

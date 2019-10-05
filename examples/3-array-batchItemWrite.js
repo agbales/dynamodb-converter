@@ -26,7 +26,7 @@ const params = ddbConverter.convertArray(arr, 'yourTableName', true);
 
 console.log(params);
 
-// Now you can batch write array items -->
+// You can now batch write array items -->
 
 // AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
 // var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});

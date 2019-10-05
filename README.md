@@ -2,60 +2,75 @@
 
 Convert Javascript objects / JSON files into DynamoDB record formatting. Facilitates putItem or batchWriteItem requests. It also shows how to convert DynamoDB records into JS objects.
 
-## Examples
+## Installation
 
-Find the following in the examples foler:
-
-**Object & Record Conversion**
-
-1. JS Object --> DyanmoDB record
-2. DynamoDB record --> JS Object
-
-**Writing to Dynamo -- (optional UUID)**
-
-3. PutItem
-4. BatchItemWrite from Array
-5. BatchItemWrite from File
+```
+npm install dynamodb-converter
+```
 
 ## Basic Usage
 
-Batch uploading an array to DyanmoDB:
+Simple conversion:
 
 ```
-const AWS = require('aws-sdk');
-AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
-const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+const ddbConverter = require('../dynamodb-converter')
 
-const json2dynamo = require('json2dynamo')
+const obj = {
+  userId: 1,
+  id: 1,
+  title: 'delectus aut autem',
+  completed: false
+}
 
-const arr = [
-    {
-      userId: 1,
-      id: 1,
-      title: 'delectus aut autem',
-      completed: false
-    },
-    {
-      userId: 1,
-      id: 2,
-      title: 'quis ut nam facilis et officia qui',
-      completed: false
-    },
-    {
-    userId: 1,
-    id: 3,
-    title: 'fugiat veniam minus',
-    completed: false
-  }
-]
+const converted = ddbConverter.convert(obj)
 
-const params = json2dynamo.convertData(arr, 'yourTableName');
-
-ddb.batchWriteItem(params, (err, data) => {
-  if (err) {
-    console.log("Error", err);
-  } else {
-    console.log("Success", data);
-  }
-});
+console.log(converted)
 ```
+
+Output:
+
+```
+{
+  userId: {
+    N: '1'
+  },
+  id: {
+    N: '1'
+  },
+  title: {
+    S: 'delectus aut autem'
+  },
+  completed: {
+    BOOL: false
+  }
+}
+```
+
+## Usage
+
+**.convert** JavaScript object -> DyanmoDB record. Optional UUID (default=false).
+
+```
+.convert(object, uuid)
+```
+
+**.unconvert** DynamoDB record --> Javascript object.
+
+```
+.unconvert()
+```
+
+**.convertArray** JavaScript object -> DyanmoDB record BatchItemWrite. Optional UUID (default=false).
+
+```
+.convertArray(array, 'TABLE-NAME', uuid)
+```
+
+## Examples
+
+**Reading & Writing to Dynamo (with optional UUID)**
+
+1. JS object --> DyanmoDB record (PutItem)
+2. DynamoDB record --> JS object
+3. BatchItemWrite from Array
+4. BatchItemWrite from File
