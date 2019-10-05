@@ -54,16 +54,103 @@ Output:
 .convert(object, uuid)
 ```
 
+From:
+
+```
+{ userID: 1 }
+```
+
+To:
+
+```
+{
+  userId: {
+    N: '1'
+  }
+}
+```
+
 **.unconvert** DynamoDB record --> Javascript object.
 
 ```
-.unconvert()
+.unconvert(object)
+```
+
+From:
+
+```
+{
+  userId: {
+    N: '1'
+  }
+}
+```
+
+To:
+
+```
+{ userID: 1 }
 ```
 
 **.convertArray** JavaScript object -> DyanmoDB record BatchItemWrite. Optional UUID (default=false).
 
 ```
 .convertArray(array, 'TABLE-NAME', uuid)
+```
+
+From:
+
+```
+[{ userID: 1, name: "Julia" }, {userID: 2, name: "Niko" }]
+```
+
+To:
+
+```
+{
+  "yourTableName": [
+    {
+      "PutRequest": {
+        "Item": {
+          "userID": {
+            "M": {
+              "N": {
+                "S": "1"
+              }
+            }
+          },
+          "name": {
+            "M": {
+              "S": {
+                "S": "Julia"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "userID": {
+            "M": {
+              "N": {
+                "S": "2"
+              }
+            }
+          },
+          "name": {
+            "M": {
+              "S": {
+                "S": "Niko"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
 ```
 
 ## Examples
