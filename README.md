@@ -10,8 +10,6 @@ npm install dynamodb-converter
 
 ## Basic Usage
 
-Simple conversion:
-
 ```
 const ddbConverter = require('../dynamodb-converter')
 
@@ -21,8 +19,6 @@ const obj = {
   title: 'delectus aut autem',
   completed: false
 }
-
-const converted = ddbConverter.convert(obj)
 
 console.log(converted)
 ```
@@ -48,7 +44,9 @@ Output:
 
 ## Usage
 
-**.convert** JavaScript object -> DyanmoDB record. Optional UUID (default=false).
+###.convert
+
+JavaScript object -> DyanmoDB record. Optional UUID (default=false).
 
 ```
 .convert(object, uuid)
@@ -70,7 +68,9 @@ To:
 }
 ```
 
-**.unconvert** DynamoDB record --> Javascript object.
+###.unconvert
+
+DynamoDB record --> Javascript object.
 
 ```
 .unconvert(object)
@@ -92,7 +92,9 @@ To:
 { userID: 1 }
 ```
 
-**.convertArray** JavaScript object -> DyanmoDB record BatchItemWrite. Optional UUID (default=false).
+###.convertArray
+
+JavaScript object -> DyanmoDB record BatchItemWrite. Optional UUID (default=false).
 
 ```
 .convertArray(array, 'TABLE-NAME', uuid)
