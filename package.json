@@ -2,11 +2,11 @@
   "name": "dynamodb-converter",
   "version": "1.0.0",
   "description": "Convert JavaScript <--> DynamoDB records",
-  "main": "index.js",
+  "main": "dynamodb-converter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "agbales",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.542.0",
