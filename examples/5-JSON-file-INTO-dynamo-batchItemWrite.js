@@ -1,16 +1,16 @@
 const fs = require('fs');
-const json2dynamo = require('../json2dynamo');
+const ddbConverter = require('../dynamodb-converter');
 
 // specifiy file route
 const raw = fs.readFileSync('../data/links.json');
 const file = JSON.parse(raw);
 
 // true adds a UUID prop
-const params = json2dynamo.convertData(file, 'yourTableName', true);
+const params = ddbConverter.convertArray(file, 'yourTableName', true);
 
 console.log(params);
 
-// Batch Write Items -->
+// You can now batch write array items -->
 
 // AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
 // var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});

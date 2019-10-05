@@ -1,4 +1,4 @@
-const json2dynamo = require('../json2dynamo');
+const ddbConverter = require('../dynamodb-converter');
 
 const arr = [
   {
@@ -22,11 +22,11 @@ const arr = [
 ];
 
 // true adds a UUID prop
-const params = json2dynamo.convertData(arr, 'yourTableName', true);
+const params = ddbConverter.convertArray(arr, 'yourTableName', true);
 
 console.log(params);
 
-// Batch Write Items -->
+// Now you can batch write array items -->
 
 // AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
 // var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});

@@ -23,7 +23,7 @@ const convertForDynamo = (data, tableName) => {
   return result;
 };
 
-const convertData = (array, tableName, uuid = false) => {
+const convertArray = (array, tableName, uuid = false) => {
   if (!Array.isArray(array)) {
     throw new Error('Must provide array');
   }
@@ -32,4 +32,4 @@ const convertData = (array, tableName, uuid = false) => {
   return JSON.stringify(data, null, 2);
 };
 
-module.exports = { convertData };
+module.exports = { convertArray };

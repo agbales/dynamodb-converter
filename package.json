@@ -1,5 +1,5 @@
 {
-  "name": "js-to-dynamo",
+  "name": "dynamodb-converter",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
