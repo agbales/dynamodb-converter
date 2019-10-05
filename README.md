@@ -44,7 +44,7 @@ Output:
 
 ## Usage
 
-###.convert
+### .convert
 
 JavaScript object -> DyanmoDB record. Optional UUID (default=false).
 
@@ -68,7 +68,7 @@ To:
 }
 ```
 
-###.unconvert
+### .unconvert
 
 DynamoDB record --> Javascript object.
 
@@ -92,7 +92,7 @@ To:
 { userID: 1 }
 ```
 
-###.convertArray
+### .convertArray
 
 JavaScript object -> DyanmoDB record BatchItemWrite. Optional UUID (default=false).
 
