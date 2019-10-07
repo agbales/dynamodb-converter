@@ -11,7 +11,8 @@ const obj = {
   completed: false
 };
 
-const converted = ddbConverter.convert(obj, true);
+// Add UUID by changing false -> true
+const converted = ddbConverter.convert(obj, false);
 
 console.log(converted);
 
