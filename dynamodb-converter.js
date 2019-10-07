@@ -7,7 +7,7 @@ const convertObjectToPutRequest = obj => {
   let item = convertObj(obj);
 
   if (APPEND_UUID) {
-    item = { ...item, uuid: uuidv4() };
+    item = { ...item, uuid: { S: uuidv4() } };
   }
 
   return {
