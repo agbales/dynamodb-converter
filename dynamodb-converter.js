@@ -30,13 +30,13 @@ const convertArray = (array, tableName, uuid = false) => {
   }
   APPEND_UUID = uuid;
   const data = convertForDynamo(array, tableName);
-  return JSON.stringify(data, null, 2);
+  return data;
 };
 
 const convert = (obj, uuid = false) => {
-  const marshalled = AWS.DynamoDB.Converter.marshall(obj);
+  let marshalled = AWS.DynamoDB.Converter.marshall(obj);
   if (uuid) {
-    return { ...marshalled, uuid: uuidv4() };
+    marshalled = { ...marshalled, uuid: { S: uuidv4() } };
   }
   return marshalled;
 };

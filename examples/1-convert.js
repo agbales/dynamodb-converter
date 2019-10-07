@@ -11,7 +11,7 @@ const obj = {
   completed: false
 };
 
-const converted = ddbConverter.convert(obj);
+const converted = ddbConverter.convert(obj, true);
 
 console.log(converted);
 
