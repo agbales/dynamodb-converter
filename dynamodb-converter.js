@@ -12,14 +12,16 @@ const convertObjectToPutRequest = obj => {
 
   return {
     PutRequest: {
-      Item: convertObj(item)
+      Item: item
     }
   };
 };
 
 const convertForDynamo = (data, tableName) => {
   const result = {
-    [tableName]: data.map(convertObjectToPutRequest)
+    RequestItems: {
+      [tableName]: data.map(convertObjectToPutRequest)
+    }
   };
   return result;
 };

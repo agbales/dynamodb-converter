@@ -27,56 +27,42 @@ describe('Table Params', () => {
 
   test('Creates batch write params for array of objects', () => {
     const result = {
-      yourTableName: [
-        {
-          PutRequest: {
-            Item: {
-              userID: {
-                M: {
-                  N: {
-                    S: '1'
-                  }
+      RequestItems: {
+        yourTableName: [
+          {
+            PutRequest: {
+              Item: {
+                userID: {
+                  N: '1'
+                },
+                name: {
+                  S: 'Julia'
                 }
-              },
-              name: {
-                M: {
-                  S: {
-                    S: 'Julia'
-                  }
+              }
+            }
+          },
+          {
+            PutRequest: {
+              Item: {
+                userID: {
+                  N: '2'
+                },
+                name: {
+                  S: 'Niko'
                 }
               }
             }
           }
-        },
-        {
-          PutRequest: {
-            Item: {
-              userID: {
-                M: {
-                  N: {
-                    S: '2'
-                  }
-                }
-              },
-              name: {
-                M: {
-                  S: {
-                    S: 'Niko'
-                  }
-                }
-              }
-            }
-          }
-        }
-      ]
+        ]
+      }
     };
     expect(ddbConverter.convertArray(arr, 'yourTableName')).toEqual(result);
   });
 
   test('Creates batch write params for array of objects with UUID', () => {
     expect(
-      ddbConverter.convertArray(arr, 'yourTableName', true).yourTableName[0]
-        .PutRequest.Item
+      ddbConverter.convertArray(arr, 'yourTableName', true).RequestItems
+        .yourTableName[0].PutRequest.Item
     ).toHaveProperty('uuid');
   });
 });

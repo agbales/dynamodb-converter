@@ -18,6 +18,7 @@ console.log(converted);
 
 // - You can now PutItem to DyanmoDB -->
 
+// const AWS = require('aws-sdk');
 // AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
 // var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
