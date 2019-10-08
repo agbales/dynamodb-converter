@@ -110,48 +110,34 @@ To:
 
 ```
 {
-  "yourTableName": [
-    {
-      "PutRequest": {
-        "Item": {
-          "userID": {
-            "M": {
-              "N": {
-                "S": "1"
-              }
+  RequestItems: {
+    "yourTableName": [
+      {
+        "PutRequest": {
+          "Item": {
+            "userID": {
+              "S": "1"
+            },
+            "name": {
+              "S": "Julia"
             }
-          },
-          "name": {
-            "M": {
-              "S": {
-                "S": "Julia"
-              }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "userID": {
+              "S": "2"
+            },
+            "name": {
+              "S": "Niko"
             }
           }
         }
       }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "userID": {
-            "M": {
-              "N": {
-                "S": "2"
-              }
-            }
-          },
-          "name": {
-            "M": {
-              "S": {
-                "S": "Niko"
-              }
-            }
-          }
-        }
-      }
-    }
-  ]
+    ]
+  }
 }
 ```
 
