@@ -1,4 +1,4 @@
-const ddbConverter = require('../dynamodb-converter.js');
+const ddbConverter = require('../dynamodb-converter');
 
 describe('Convert & Unconvert', () => {
   test('Converts JS objects to DynamoDB records', () => {
@@ -64,5 +64,23 @@ describe('Table Params', () => {
       ddbConverter.convertArray(arr, 'yourTableName', true).RequestItems
         .yourTableName[0].PutRequest.Item
     ).toHaveProperty('uuid');
+  });
+});
+
+describe('Batching', () => {
+  let largeArray;
+
+  beforeEach(() => {
+    largeArray = [];
+    for (let i = 0; i < 30; i++) {
+      largeArray.push({ sample: true });
+    }
+  });
+  test('Returns batch of 25 by default', () => {
+    expect(ddbConverter.batch(largeArray).length).toEqual(2);
+  });
+  test('Returns specified num batch', () => {
+    let batchSize = 2;
+    expect(ddbConverter.batch(largeArray, batchSize).length).toEqual(15);
   });
 });

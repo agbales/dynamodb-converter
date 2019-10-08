@@ -47,4 +47,20 @@ const unconvert = obj => {
   return AWS.DynamoDB.Converter.unmarshall(obj);
 };
 
-module.exports = { convertArray, convert, unconvert };
+const batch = (array, number = 25) => {
+  return array.chunk(number);
+};
+
+Object.defineProperty(Array.prototype, 'chunk', {
+  value: function(chunkSize) {
+    let temporal = [];
+
+    for (let i = 0; i < this.length; i += chunkSize) {
+      temporal.push(this.slice(i, i + chunkSize));
+    }
+
+    return temporal;
+  }
+});
+
+module.exports = { convertArray, convert, unconvert, batch };
