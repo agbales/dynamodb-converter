@@ -28,6 +28,7 @@ console.log(params);
 
 // You can now batch write array items -->
 
+// const AWS = require('aws-sdk');
 // AWS.config.update({region: 'SPECIFY-YOUR-REGION'});
 // var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
