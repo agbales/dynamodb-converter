@@ -1,6 +1,6 @@
 ## Converting JavaScript objects --> DyanmoDB
 
-Convert Javascript objects / JSON files into DynamoDB record formatting. Facilitates putItem or batchWriteItem requests. It also shows how to convert DynamoDB records into JS objects.
+Convert Javascript objects / JSON files into DynamoDB record formatting. Facilitates putItem or batchWriteItem requests, including batch sizing. It also shows how to convert DynamoDB records into JS objects.
 
 ## Installation
 
@@ -139,6 +139,14 @@ To:
     ]
   }
 }
+```
+
+### .batch
+
+Creating array chunks to meet DyanmoDB 25 record insertion cap. batchSize defaults at 25, but can be customized.
+
+```
+.batch(array, batchSize)
 ```
 
 ## Examples

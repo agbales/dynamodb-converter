@@ -1,6 +1,6 @@
 {
   "name": "dynamodb-converter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Convert JavaScript <--> DynamoDB records",
   "main": "dynamodb-converter.js",
   "scripts": {
